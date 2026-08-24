@@ -5,7 +5,8 @@ import { services } from '../data/services';
 import { stack } from '../data/stack';
 
 const companyName = 'Robe Solutions';
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const root = `${base}/`;
 ---
 
 <Layout title={companyName}>
@@ -36,12 +37,12 @@ const base = import.meta.env.BASE_URL;
 
 		<section class="capabilities" id="capabilities">
 			<div class="section-kicker">02 / What we do</div>
-			<div class="capability-grid">{services.map((service) => <article><span class="number">{service.number}</span><h3>{service.name}</h3><p>{service.short}</p><a href={`${base}services/${service.slug}`}>Explore <span>↗</span></a></article>)}</div>
+			<div class="capability-grid">{services.map((service) => <article><span class="number">{service.number}</span><h3>{service.name}</h3><p>{service.short}</p><a href={`${root}services/${service.slug}`}>Explore <span>↗</span></a></article>)}</div>
 		</section>
 
 		<section class="stack-section">
 			<div class="section-kicker">03 / Our working stack</div>
-			<div class="stack-content"><h2>Specialists in the<br /><em>Microsoft data ecosystem.</em></h2><div class="stack-list">{stack.map((item) => <a href={`/stack/${item.slug}`}>{item.name}</a>)}</div></div>
+			<div class="stack-content"><h2>Specialists in the<br /><em>Microsoft data ecosystem.</em></h2><div class="stack-list">{stack.map((item) => <a href={`${root}stack/${item.slug}`}>{item.name}</a>)}</div></div>
 		</section>
 
 		<section class="architecture" id="architecture">

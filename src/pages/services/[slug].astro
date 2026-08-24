@@ -10,23 +10,24 @@ export function getStaticPaths() {
 
 const { service } = Astro.props;
 const stackLinks = service.stack.map((name) => stack.find((item) => item.name === name));
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const root = `${base}/`;
 ---
 
 <Layout title={`${service.name} | Robe Solutions`}>
 	<SiteHeader />
 	<main class="service-page">
 		<section class="service-hero">
-			<div><p class="eyebrow">{service.number} / Robe Solutions services</p><h1>{service.name}</h1><p class="lead">{service.description}</p><a class="button" href={`${base}#contact`}>Talk about your project <span>↗</span></a></div>
+			<div><p class="eyebrow">{service.number} / Robe Solutions services</p><h1>{service.name}</h1><p class="lead">{service.description}</p><a class="button" href={`${root}#contact`}>Talk about your project <span>↗</span></a></div>
 			<div class="image-placeholder"><span>IMAGE / PROJECT DETAIL</span><strong>Drop a service image here</strong><small>Add a relevant case study, diagram, or product image to <code>public/images</code>.</small></div>
 		</section>
 		<section class="service-details">
 			<div class="section-kicker">What this includes</div>
-			<div class="details-content"><h2>Built for the<br /><em>work ahead.</em></h2><div class="points">{service.points.map((point, index) => <div><span>0{index + 1}</span><p>{point}</p></div>)}<div class="stack-row"><span>STACK</span><p>{stackLinks.map((item, index) => item && <><a href={`${base}stack/${item.slug}`}>{item.name}</a>{index < stackLinks.length - 1 && ' / '}</>)}</p></div></div></div>
+			<div class="details-content"><h2>Built for the<br /><em>work ahead.</em></h2><div class="points">{service.points.map((point, index) => <div><span>0{index + 1}</span><p>{point}</p></div>)}<div class="stack-row"><span>STACK</span><p>{stackLinks.map((item, index) => item && <><a href={`${root}stack/${item.slug}`}>{item.name}</a>{index < stackLinks.length - 1 && ' / '}</>)}</p></div></div></div>
 		</section>
-		<section class="next-step"><p class="eyebrow">One connected partner</p><h2>Good data work<br /><em>compounds.</em></h2><a class="text-link" href={base}>Explore all services <span>↗</span></a></section>
+		<section class="next-step"><p class="eyebrow">One connected partner</p><h2>Good data work<br /><em>compounds.</em></h2><a class="text-link" href={root}>Explore all services <span>↗</span></a></section>
 	</main>
-	<footer><a href={base} class="logo"><span>R</span> robe<span class="dot">.</span></a><span>© 2026 Robe Solutions</span></footer>
+	<footer><a href={root} class="logo"><span>R</span> robe<span class="dot">.</span></a><span>© 2026 Robe Solutions</span></footer>
 </Layout>
 
 <style>

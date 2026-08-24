@@ -2,13 +2,14 @@
 import { services } from '../data/services';
 import { stack } from '../data/stack';
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const root = `${base}/`;
 ---
 
 <header class="site-header">
-	<a href={base} class="logo" aria-label="Robe Solutions home"><span>R</span> robe<span class="dot">.</span></a>
+	<a href={root} class="logo" aria-label="Robe Solutions home"><span>R</span> robe<span class="dot">.</span></a>
 	<nav aria-label="Main navigation">
-		<a href={base}>Home</a>
+		<a href={root}>Home</a>
 		<div class="services-menu">
 			<button type="button" aria-haspopup="true">Services <span>⌄</span></button>
 			<div class="dropdown">
@@ -24,7 +25,7 @@ const base = import.meta.env.BASE_URL;
 			</div>
 		</div>
 		<button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch color mode"><span class="theme-option light">Light theme</span><span class="theme-option dark">Dark theme</span></button>
-		<a href={`${base}#contact`} class="nav-cta">Start a conversation <span>↗</span></a>
+		<a href={`${root}#contact`} class="nav-cta">Start a conversation <span>↗</span></a>
 	</nav>
 </header>
 
