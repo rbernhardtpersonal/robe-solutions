@@ -5,6 +5,7 @@ import { services } from '../data/services';
 import { stack } from '../data/stack';
 
 const companyName = 'Robe Solutions';
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title={companyName}>
@@ -35,7 +36,7 @@ const companyName = 'Robe Solutions';
 
 		<section class="capabilities" id="capabilities">
 			<div class="section-kicker">02 / What we do</div>
-			<div class="capability-grid">{services.map((service) => <article><span class="number">{service.number}</span><h3>{service.name}</h3><p>{service.short}</p><a href={`/services/${service.slug}`}>Explore <span>↗</span></a></article>)}</div>
+			<div class="capability-grid">{services.map((service) => <article><span class="number">{service.number}</span><h3>{service.name}</h3><p>{service.short}</p><a href={`${base}services/${service.slug}`}>Explore <span>↗</span></a></article>)}</div>
 		</section>
 
 		<section class="stack-section">
@@ -48,10 +49,10 @@ const companyName = 'Robe Solutions';
 			<div class="architecture-intro"><h2>A mature environment,<br /><em>working as one.</em></h2><p>Every platform has a role. Together they create a connected path from operational systems to trusted decisions.</p></div>
 			<div class="architecture-image"><span>IMAGE / REFERENCE ARCHITECTURE</span><strong>Add your environment diagram here</strong><small>Drop a large architecture image into <code>public/images</code> when it is ready.</small></div>
 			<div class="architecture-examples">
-				<article><span>01</span><h3>Customer sync</h3><p>Using <a href="/stack/azure-data-factory">Azure Data Factory</a> and integration services, keep the customer list synchronized between your ERP and <a href="/services/salesforce-development-implementations">Salesforce</a>.</p></article>
-				<article><span>02</span><h3>Change data capture</h3><p>Use <a href="/stack/qlik-replicate">Qlik Replicate</a> to capture changes from Salesforce and ERP systems and land fresh data in the datalake.</p></article>
-				<article><span>03</span><h3>Sales data mart</h3><p>Model curated sales data in <a href="/stack/microsoft-fabric">Microsoft Fabric</a> so metrics are consistent, governed, and ready for reuse.</p></article>
-				<article><span>04</span><h3>Decision layer</h3><p>Let <a href="/stack/power-bi">Power BI</a> consume the sales datamart and give commercial teams a shared view of performance.</p></article>
+				<article><span>01</span><h3>Customer sync</h3><p>Using <a href={`${base}stack/azure-data-factory`}>Azure Data Factory</a> and integration services, keep the customer list synchronized between your ERP and <a href={`${base}services/salesforce-development-implementations`}>Salesforce</a>.</p></article>
+				<article><span>02</span><h3>Change data capture</h3><p>Use <a href={`${base}stack/qlik-replicate`}>Qlik Replicate</a> to capture changes from Salesforce and ERP systems and land fresh data in the datalake.</p></article>
+				<article><span>03</span><h3>Sales data mart</h3><p>Model curated sales data in <a href={`${base}stack/microsoft-fabric`}>Microsoft Fabric</a> so metrics are consistent, governed, and ready for reuse.</p></article>
+				<article><span>04</span><h3>Decision layer</h3><p>Let <a href={`${base}stack/power-bi`}>Power BI</a> consume the sales datamart and give commercial teams a shared view of performance.</p></article>
 			</div>
 		</section>
 
