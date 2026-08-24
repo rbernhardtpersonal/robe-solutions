@@ -8,7 +8,7 @@ const base = import.meta.env.BASE_URL;
 <header class="site-header">
 	<a href={base} class="logo" aria-label="Robe Solutions home"><span>R</span> robe<span class="dot">.</span></a>
 	<nav aria-label="Main navigation">
-		<a href={`${base}#approach`}>Approach</a>
+		<a href={base}>Home</a>
 		<div class="services-menu">
 			<button type="button" aria-haspopup="true">Services <span>⌄</span></button>
 			<div class="dropdown">
@@ -23,6 +23,7 @@ const base = import.meta.env.BASE_URL;
 				{stack.map((item) => <a href={`${base}stack/${item.slug}`}>{item.name}<span>↗</span></a>)}
 			</div>
 		</div>
+		<button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch color mode"><span class="theme-option light">Light theme</span><span class="theme-option dark">Dark theme</span></button>
 		<a href={`${base}#contact`} class="nav-cta">Start a conversation <span>↗</span></a>
 	</nav>
 </header>
@@ -45,5 +46,19 @@ const base = import.meta.env.BASE_URL;
 	.dropdown p { margin: 0 0 8px; color: #697269; text-transform: uppercase; letter-spacing: 1.3px; font: 600 9px 'Space Grotesk', sans-serif; }
 	.dropdown a { display: flex; justify-content: space-between; padding: 9px 0; border-top: 1px solid #2d322f; color: #f4f4ed; font-size: 12px; }
 	.dropdown a:hover { color: #c9f85b; }
-	@media (max-width: 800px) { .site-header { padding: 22px 20px; } nav { gap: 17px; } nav > a:not(.nav-cta), .services-menu { display: none; } .nav-cta { padding: 9px 11px; } }
+	.theme-toggle { display: flex; align-items: center; padding: 3px; border: 1px solid #3c413d; background: transparent; color: #a5aaa1; cursor: pointer; font: 600 10px 'DM Sans', sans-serif; white-space: nowrap; }.theme-toggle:hover { border-color: #c9f85b; }.theme-option { padding: 7px 9px; }.theme-option.light { color: #172018; background: #f4f4ed; }.theme-option.dark { color: #a5aaa1; }
+	:global(html[data-theme='dark']) .theme-toggle { border-color: #566052; }.theme-toggle .light { background: #f4f4ed; color: #172018; }:global(html[data-theme='dark']) .theme-toggle .light { background: transparent; color: #a5aaa1; }:global(html[data-theme='dark']) .theme-toggle .dark { background: #c9f85b; color: #172018; }
+	@media (max-width: 800px) { .site-header { padding: 22px 20px; } nav { gap: 8px; } nav > a:not(.nav-cta), .services-menu { display: none; } .nav-cta { padding: 9px 11px; } .theme-option { padding: 7px 6px; } }
 </style>
+
+<script>
+	const toggle = document.querySelector('.theme-toggle');
+	const updateThemeLabel = () => toggle?.setAttribute('aria-label', document.documentElement.dataset.theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+	updateThemeLabel();
+	toggle?.addEventListener('click', () => {
+		const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+		document.documentElement.dataset.theme = theme;
+		localStorage.setItem('robe-theme', theme);
+		updateThemeLabel();
+	});
+</script>
