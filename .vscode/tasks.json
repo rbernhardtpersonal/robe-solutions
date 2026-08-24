@@ -147,6 +147,262 @@
 			],
 			"isBackground": false,
 			"problemMatcher": []
+		},
+		{
+			"label": "Finalize initial commit",
+			"type": "shell",
+			"command": "C:\\Program Files\\Git\\cmd\\git.exe",
+			"args": [
+				"commit",
+				"-m",
+				"Initial website"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Publish Robe Solutions",
+			"type": "shell",
+			"command": "C:\\Program Files\\GitHub CLI\\gh.exe",
+			"args": [
+				"repo",
+				"create",
+				"robe-solutions",
+				"--public",
+				"--source=.",
+				"--remote=origin",
+				"--push"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Publish Robe Solutions Absolute",
+			"type": "shell",
+			"command": "C:\\Program Files\\GitHub CLI\\gh.exe",
+			"args": [
+				"repo",
+				"create",
+				"robe-solutions",
+				"--public",
+				"--source=E:\\Documents\\Robe-Solutions\\Website",
+				"--remote=origin",
+				"--push"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Verify committed repository",
+			"type": "shell",
+			"command": "C:\\Program Files\\Git\\cmd\\git.exe",
+			"args": [
+				"-C",
+				"E:\\Documents\\Robe-Solutions\\Website",
+				"status",
+				"--short",
+				"--branch"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Create GitHub repository",
+			"type": "shell",
+			"command": "C:\\Program Files\\GitHub CLI\\gh.exe",
+			"args": [
+				"repo",
+				"create",
+				"rbernhardtpersonal/robe-solutions",
+				"--public",
+				"--description",
+				"Robe Solutions business data analytics and engineering website"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Add GitHub remote",
+			"type": "shell",
+			"command": "C:\\Program Files\\Git\\cmd\\git.exe",
+			"args": [
+				"-C",
+				"E:\\Documents\\Robe-Solutions\\Website",
+				"remote",
+				"add",
+				"origin",
+				"https://github.com/rbernhardtpersonal/robe-solutions.git"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Push website to GitHub",
+			"type": "shell",
+			"command": "C:\\Program Files\\Git\\cmd\\git.exe",
+			"args": [
+				"-C",
+				"E:\\Documents\\Robe-Solutions\\Website",
+				"push",
+				"-u",
+				"origin",
+				"master"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Secure GitHub repository",
+			"type": "shell",
+			"command": "C:\\Program Files\\GitHub CLI\\gh.exe",
+			"args": [
+				"repo",
+				"view",
+				"robe-solutions",
+				"--json",
+				"nameWithOwner,isPrivate,url"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Make repository private",
+			"type": "shell",
+			"command": "C:\\Program Files\\GitHub CLI\\gh.exe",
+			"args": [
+				"repo",
+				"edit",
+				"rbernhardtpersonal/robe-solutions",
+				"--visibility",
+				"private",
+				"--accept-visibility-change-consequences"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Verify private repository",
+			"type": "shell",
+			"command": "C:\\Program Files\\GitHub CLI\\gh.exe",
+			"args": [
+				"repo",
+				"view",
+				"rbernhardtpersonal/robe-solutions",
+				"--json",
+				"nameWithOwner,isPrivate,url"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Inspect local Git state",
+			"type": "shell",
+			"command": "C:\\Program Files\\Git\\cmd\\git.exe",
+			"args": [
+				"status",
+				"--short",
+				"--branch"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Inspect Git history",
+			"type": "shell",
+			"command": "C:\\Program Files\\Git\\cmd\\git.exe",
+			"args": [
+				"log",
+				"--oneline",
+				"--decorate",
+				"-5"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Inspect Git remote",
+			"type": "shell",
+			"command": "C:\\Program Files\\Git\\cmd\\git.exe",
+			"args": [
+				"remote",
+				"-v"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Review pending Git change",
+			"type": "shell",
+			"command": "C:\\Program Files\\Git\\cmd\\git.exe",
+			"args": [
+				"diff",
+				"--",
+				".vscode/tasks.json"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Publish website commit",
+			"type": "shell",
+			"command": "C:\\Program Files\\Git\\cmd\\git.exe",
+			"args": [
+				"push",
+				"-u",
+				"origin",
+				"master"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Confirm remote privacy",
+			"type": "shell",
+			"command": "C:\\Program Files\\GitHub CLI\\gh.exe",
+			"args": [
+				"repo",
+				"view",
+				"rbernhardtpersonal/robe-solutions",
+				"--json",
+				"isPrivate,url,defaultBranchRef"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Confirm published branch",
+			"type": "shell",
+			"command": "C:\\Program Files\\Git\\cmd\\git.exe",
+			"args": [
+				"status",
+				"--short",
+				"--branch"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Commit and publish task update",
+			"type": "shell",
+			"command": "C:\\Program Files\\Git\\cmd\\git.exe",
+			"args": [
+				"add",
+				".vscode/tasks.json"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Commit and publish task update",
+			"type": "shell",
+			"command": "C:\\Program Files\\Git\\cmd\\git.exe",
+			"args": [
+				"commit",
+				"-m",
+				"Add workspace publishing task"
+			],
+			"isBackground": false,
+			"problemMatcher": []
 		}
 	]
 }
