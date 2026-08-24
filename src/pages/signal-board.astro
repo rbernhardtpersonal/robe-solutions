@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+---
+
+<Layout title="Signal Board | Robe Solutions">
+	<SiteHeader />
+	<main class="signal-page">
+		<p class="eyebrow">R / Signal board</p>
+		<h1>A quiet place<br /><em>for the signal.</em></h1>
+		<p class="intro">This workspace is reserved for a future live data experience.</p>
+		<div class="signal-panel" aria-label="Reserved signal board interface">
+			<div class="panel-top"><span>R / SIGNAL BOARD</span><span class="live"><i></i> LIVE SYSTEMS</span></div>
+			<div class="metric-row"><div><span class="metric-label">Pipeline health</span><strong>99.98%</strong><small>↑ 2.4% this quarter</small></div><div class="chart" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
+			<div class="panel-rule"></div><div class="board-grid"><div><span class="metric-label">Data sources</span><strong>148</strong></div><div><span class="metric-label">Decisions enabled</span><strong>04<span class="accent">×</span></strong></div><div><span class="metric-label">Avg. latency</span><strong>42<span class="unit">ms</span></strong></div></div><div class="panel-bottom"><span>LAST SYNC</span><span>Today, 09:42:18 UTC&nbsp; <b>●</b></span></div>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	.signal-page { max-width: 850px; margin: 0 auto; padding: 85px 32px 130px; }.eyebrow { color: #c9f85b; text-transform: uppercase; letter-spacing: 1.5px; font: 700 11px 'DM Sans', sans-serif; }.signal-page h1 { margin: 32px 0 20px; color: #f4f4ed; font: 500 clamp(58px, 8vw, 100px)/.9 'Space Grotesk', sans-serif; letter-spacing: -5px; }.signal-page h1 em { color: #c9f85b; font-style: normal; }.intro { color: #a5aaa1; font-size: 17px; }.signal-panel { max-width: 720px; margin-top: 80px; padding: 22px; background: #1a1e1c; border: 1px solid #353b35; box-shadow: 25px 25px 0 rgba(201,248,91,.08); }.panel-top, .panel-bottom { display: flex; justify-content: space-between; color: #697269; font: 600 9px 'Space Grotesk', sans-serif; letter-spacing: 1.3px; }.live { color: #a5aaa1; }.live i { display: inline-block; width: 5px; height: 5px; margin-right: 5px; border-radius: 50%; background: #c9f85b; }.metric-row { display: flex; justify-content: space-between; align-items: end; padding: 57px 0 31px; }.metric-label { display: block; margin-bottom: 10px; color: #7f897e; font-size: 11px; }.metric-row strong { display: block; color: #f4f4ed; font: 600 44px 'Space Grotesk', sans-serif; letter-spacing: -2px; }.metric-row small { color: #c9f85b; font-size: 10px; }.chart { width: 150px; height: 61px; display: flex; align-items: end; gap: 4px; }.chart span { flex: 1; background: #5d7242; }.chart span:nth-child(1){height:28%}.chart span:nth-child(2){height:39%}.chart span:nth-child(3){height:34%}.chart span:nth-child(4){height:49%}.chart span:nth-child(5){height:44%}.chart span:nth-child(6){height:62%}.chart span:nth-child(7){height:57%}.chart span:nth-child(8){height:70%}.chart span:nth-child(9){height:66%}.chart span:nth-child(10){height:82%;background:#c9f85b}.chart span:nth-child(11){height:76%;background:#c9f85b}.chart span:nth-child(12){height:100%;background:#c9f85b}.panel-rule { height: 1px; background: #353b35; }.board-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 31px 0 38px; }.board-grid strong { color: #f4f4ed; font: 500 27px 'Space Grotesk', sans-serif; }.accent { color: #c9f85b; }.unit { margin-left: 3px; color: #697269; font-size: 13px; }.panel-bottom b { color: #c9f85b; }
+	@media (max-width: 800px) { .signal-page { padding: 55px 20px 90px; }.signal-page h1 { letter-spacing: -3px; }.signal-panel { margin-top: 55px; padding: 18px; }.metric-row { display: block; }.chart { margin-top: 35px; width: 100%; }.board-grid { gap: 8px; }.board-grid strong { font-size: 21px; } }
+</style>

@@ -1,0 +1,58 @@
+export const services = [
+	{
+		slug: 'data-pipelines-engineering',
+		number: '01',
+		name: 'Data Pipelines & Engineering',
+		short: 'Build the dependable systems that move and prepare your data.',
+		description: 'Data pipelines collect information from the tools your business already uses and move it into the places where it can create value. We design, build, and maintain ETL and ELT workflows that transform raw records into consistent, trusted data. The result is a foundation your analysts, applications, and leaders can rely on as your needs grow.',
+		points: ['Batch and streaming pipelines', 'Data quality checks and observability', 'Cloud-native orchestration'],
+		stack: ['Azure Data Factory', 'SQL Server', 'Azure SQL Database', 'Boomi Integration', 'Qlik Replicate', 'Azure Logic Apps', 'Power Automate'],
+	},
+	{
+		slug: 'data-platforms',
+		number: '02',
+		name: 'Data Platforms',
+		short: 'Choose and shape the right home for your business data.',
+		description: 'A data platform is the environment where your information is stored, organized, governed, and made available for use. We help you design or modernize data warehouses, data lakes, and lakehouses around your real reporting and operational needs. We balance performance, flexibility, security, and cost so the architecture serves the business instead of becoming another obstacle.',
+		points: ['Warehouse, lake, and lakehouse architecture', 'Dimensional and medallion modeling', 'Migration, governance, and documentation'],
+		stack: ['Microsoft Fabric', 'SQL Server', 'Azure SQL Database', 'Azure Data Factory', 'Qlik Replicate', 'Power BI'],
+	},
+	{
+		slug: 'business-systems-integration',
+		number: '03',
+		name: 'Business Systems Integration',
+		short: 'Connect ERP, CRM, and operational systems into one useful picture.',
+		description: 'Business systems integration makes sure the important information in one application is available to the others that need it. We connect ERP, CRM, finance, operations, and third-party tools through APIs, events, and dependable synchronization workflows. That reduces duplicate entry, prevents conflicting records, and gives teams a more complete view of the customer and the business.',
+		points: ['API and event-based integrations', 'ERP, CRM, and operational data sync', 'Master data alignment and recovery'],
+		stack: ['Boomi Integration', 'Novacura Flow', 'Azure Logic Apps', 'Power Automate', 'Qlik Replicate', 'SQL Server', 'Azure SQL Database'],
+	},
+	{
+		slug: 'database-reliability',
+		number: '04',
+		name: 'Database Reliability',
+		short: 'Keep the databases behind your business fast, secure, and available.',
+		description: 'Your databases support critical applications, reports, and day-to-day operations, so their health directly affects the business. We provide DBA expertise to improve performance, strengthen backup and recovery, and manage access safely. Whether you need ongoing support or help with a specific issue, we make the database layer more predictable.',
+		points: ['Performance tuning and capacity planning', 'Backup, recovery, and high availability', 'Security, access, and maintenance'],
+		stack: ['SQL Server', 'Azure SQL Database', 'Microsoft Fabric', 'Azure Data Factory'],
+	},
+	{
+		slug: 'business-intelligence',
+		number: '05',
+		name: 'Business Intelligence & Analytics',
+		short: 'Turn business questions into clear, actionable answers.',
+		description: 'Business intelligence brings trusted data into reports, dashboards, and analysis that people can actually use. We help define the right measures, shape the underlying models, and create experiences that make trends and exceptions clear. Your teams spend less time reconciling spreadsheets and more time deciding what to do next.',
+		points: ['KPI and dashboard design', 'Semantic models and self-service analytics', 'Reporting automation and enablement'],
+		stack: ['Power BI', 'Microsoft Fabric', 'SQL Server', 'Azure SQL Database', 'Power Automate'],
+	},
+	{
+		slug: 'salesforce-development-implementations',
+		number: '06',
+		name: 'Salesforce Consulting & Delivery',
+		short: 'Make Salesforce fit the way your teams sell, serve, and grow.',
+		description: 'Salesforce should reflect your customer process, not force your team into a generic one. We plan and deliver implementations, custom development, automation, and integrations that support adoption and produce better customer data. We also connect Salesforce to the wider data platform so customer context is available beyond the CRM.',
+		points: ['Implementation and configuration', 'Custom development and workflow automation', 'Salesforce data and systems integration'],
+		stack: ['Salesforce', 'Boomi Integration', 'Azure Logic Apps', 'Power Automate'],
+	},
+] as const;
+
+export type Service = (typeof services)[number];

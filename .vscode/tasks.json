@@ -1,0 +1,152 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Check Git installation",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"--version"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Install Git for publishing",
+			"type": "shell",
+			"command": "winget",
+			"args": [
+				"install",
+				"--id",
+				"Git.Git",
+				"--exact",
+				"--accept-source-agreements",
+				"--accept-package-agreements"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Verify publishing tools",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-Command",
+				"& 'C:\\Program Files\\Git\\cmd\\git.exe' --version; & 'C:\\Program Files\\GitHub CLI\\gh.exe' --version; & 'C:\\Program Files\\GitHub CLI\\gh.exe' auth status"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check GitHub authentication",
+			"type": "shell",
+			"command": "C:\\Program Files\\GitHub CLI\\gh.exe",
+			"args": [
+				"auth",
+				"status"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Authenticate GitHub CLI",
+			"type": "shell",
+			"command": "C:\\Program Files\\GitHub CLI\\gh.exe",
+			"args": [
+				"auth",
+				"login",
+				"--web",
+				"--git-protocol",
+				"https"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Verify authenticated GitHub",
+			"type": "shell",
+			"command": "C:\\Program Files\\GitHub CLI\\gh.exe",
+			"args": [
+				"auth",
+				"status"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Initialize website repository",
+			"type": "shell",
+			"command": "C:\\Program Files\\Git\\cmd\\git.exe",
+			"args": [
+				"init"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Commit website files",
+			"type": "shell",
+			"command": "C:\\Program Files\\Git\\cmd\\git.exe",
+			"args": [
+				"add",
+				".",
+				";",
+				"git",
+				"commit",
+				"-m",
+				"Initial website"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Create initial commit",
+			"type": "shell",
+			"command": "C:\\Program Files\\Git\\cmd\\git.exe",
+			"args": [
+				"commit",
+				"-m",
+				"Initial website"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Set repository commit identity",
+			"type": "shell",
+			"command": "C:\\Program Files\\Git\\cmd\\git.exe",
+			"args": [
+				"config",
+				"user.name",
+				"rbernhardtpersonal"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Set repository commit email",
+			"type": "shell",
+			"command": "C:\\Program Files\\Git\\cmd\\git.exe",
+			"args": [
+				"config",
+				"user.email",
+				"rbernhardtpersonal@users.noreply.github.com"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Commit website files",
+			"type": "shell",
+			"command": "C:\\Program Files\\Git\\cmd\\git.exe",
+			"args": [
+				"commit",
+				"-m",
+				"Initial website"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		}
+	]
+}

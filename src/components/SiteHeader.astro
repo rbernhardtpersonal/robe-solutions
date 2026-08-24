@@ -1,0 +1,47 @@
+---
+import { services } from '../data/services';
+import { stack } from '../data/stack';
+---
+
+<header class="site-header">
+	<a href="/" class="logo" aria-label="Robe Solutions home"><span>R</span> robe<span class="dot">.</span></a>
+	<nav aria-label="Main navigation">
+		<a href="/#approach">Approach</a>
+		<div class="services-menu">
+			<button type="button" aria-haspopup="true">Services <span>⌄</span></button>
+			<div class="dropdown">
+				<p>What we do</p>
+				{services.map((service) => <a href={`/services/${service.slug}`}>{service.name}<span>↗</span></a>)}
+			</div>
+		</div>
+		<div class="services-menu">
+			<button type="button" aria-haspopup="true">Stack <span>⌄</span></button>
+			<div class="dropdown stack-dropdown">
+				<p>Platforms we specialize in</p>
+				{stack.map((item) => <a href={`/stack/${item.slug}`}>{item.name}<span>↗</span></a>)}
+			</div>
+		</div>
+		<a href="/#contact" class="nav-cta">Start a conversation <span>↗</span></a>
+	</nav>
+</header>
+
+<style>
+	.site-header { position: relative; z-index: 5; display: flex; justify-content: space-between; align-items: center; max-width: 1240px; margin: 0 auto; padding: 30px 32px; }
+	.logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 19px; letter-spacing: -1px; text-decoration: none; color: #f4f4ed; }
+	.logo > span:first-child { display: inline-grid; place-items: center; width: 25px; height: 25px; margin-right: 4px; background: #c9f85b; color: #101212; font-size: 14px; letter-spacing: 0; }
+	.logo .dot { color: #c9f85b; }
+	nav { display: flex; align-items: center; gap: 31px; }
+	nav a, nav button { color: #a5aaa1; text-decoration: none; font: 500 13px 'DM Sans', sans-serif; }
+	nav a:hover, nav button:hover, nav button:focus-visible { color: #f4f4ed; }
+	nav button { appearance: none; border: 0; background: transparent; cursor: pointer; padding: 12px 0; }
+	nav button span { color: #c9f85b; margin-left: 5px; }
+	.nav-cta { border: 1px solid #3c413d; padding: 11px 15px; color: #f4f4ed; }
+	nav .nav-cta span, .dropdown span { color: #c9f85b; margin-left: 8px; }
+	.services-menu { position: relative; }
+	.dropdown { position: absolute; top: 100%; right: -22px; width: 310px; padding: 18px; visibility: hidden; opacity: 0; transform: translateY(-7px); background: #1a1e1c; border: 1px solid #353b35; box-shadow: 12px 12px 0 rgba(201,248,91,.08); transition: opacity .18s ease, transform .18s ease, visibility .18s; }
+	.services-menu:hover .dropdown, .services-menu:focus-within .dropdown { visibility: visible; opacity: 1; transform: translateY(0); }
+	.dropdown p { margin: 0 0 8px; color: #697269; text-transform: uppercase; letter-spacing: 1.3px; font: 600 9px 'Space Grotesk', sans-serif; }
+	.dropdown a { display: flex; justify-content: space-between; padding: 9px 0; border-top: 1px solid #2d322f; color: #f4f4ed; font-size: 12px; }
+	.dropdown a:hover { color: #c9f85b; }
+	@media (max-width: 800px) { .site-header { padding: 22px 20px; } nav { gap: 17px; } nav > a:not(.nav-cta), .services-menu { display: none; } .nav-cta { padding: 9px 11px; } }
+</style>

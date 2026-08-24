@@ -1,0 +1,41 @@
+---
+interface Props {
+	title?: string;
+}
+
+const { title = 'Your Company' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content="Robe Solutions builds dependable data platforms for teams that need better answers, faster." />
+		<title>{title}</title>
+	</head>
+
+	<body>
+		<slot />
+	</body>
+</html>
+
+<style>
+	:root {
+		--color-main: #f4f4ed;
+	}
+
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		min-height: 100%;
+	}
+
+	body {
+		font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+		color: var(--color-main);
+		background: #101212;
+	}
+</style>
