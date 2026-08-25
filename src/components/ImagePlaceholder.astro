@@ -1,0 +1,34 @@
+---
+import { imageFolder } from '../data/site';
+
+interface Props {
+	imageName: string;
+	alt: string;
+	label: string;
+	class?: string;
+}
+
+const { imageName, alt, label, class: className = '' } = Astro.props;
+const imageSource = `${imageFolder}${imageName}`;
+---
+
+<div class={`image-placeholder ${className}`}>
+	<img class="content-image" src={imageSource} alt={alt} onerror="this.hidden = true; this.nextElementSibling.hidden = false" />
+	<div class="image-copy" hidden>
+		<span>{label}</span>
+		<strong>{imageName}</strong>
+		<small>Expected file: <code>public/images/{imageName}</code></small>
+	</div>
+</div>
+
+<style>
+	.image-placeholder { position: relative; min-height: 330px; overflow: hidden; border: 1px solid #3a4239; border-radius: 18px; box-shadow: 0 18px 45px rgba(16,18,18,.22), 0 10px 25px rgba(201,248,91,.1); }
+	.content-image { display: block; width: 100%; min-height: 330px; object-fit: cover; }
+	.image-copy { position: absolute; inset: 0; z-index: 1; display: flex; flex-direction: column; justify-content: end; padding: 20px 27px; background: repeating-linear-gradient(135deg, #1b201d, #1b201d 2px, #202621 2px, #202621 4px); }
+	.image-copy[hidden] { display: none; }
+	.image-copy span { display: block; margin-bottom: 9px; color: #c9f85b; font: 600 9px 'Space Grotesk', sans-serif; letter-spacing: 1.3px; }
+	.image-copy strong { display: block; color: #f4f4ed; font: 500 25px 'Space Grotesk', sans-serif; }
+	.image-copy small { display: block; margin-top: 7px; color: #d0d7cc; }
+	.image-copy code { color: #c9f85b; }
+	@media (max-width: 800px) { .image-placeholder { min-height: 270px; margin-top: 65px; }.content-image { min-height: 270px; } }
+</style>

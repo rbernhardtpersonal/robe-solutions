@@ -450,6 +450,407 @@
 			],
 			"isBackground": false,
 			"problemMatcher": []
+		},
+		{
+			"label": "Commit final task metadata now",
+			"type": "shell",
+			"command": "C:\\Program Files\\Git\\cmd\\git.exe",
+			"args": [
+				"commit",
+				"-m",
+				"Update workspace task metadata"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Push final task metadata now",
+			"type": "shell",
+			"command": "C:\\Program Files\\Git\\cmd\\git.exe",
+			"args": [
+				"push",
+				"origin",
+				"master"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Validate GitHub Pages build",
+			"type": "shell",
+			"command": "npm.cmd",
+			"args": [
+				"run",
+				"build"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Inspect Pages changes",
+			"type": "shell",
+			"command": "C:\\Program Files\\Git\\cmd\\git.exe",
+			"args": [
+				"status",
+				"--short"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Stage GitHub Pages files",
+			"type": "shell",
+			"command": "C:\\Program Files\\Git\\cmd\\git.exe",
+			"args": [
+				"add",
+				"astro.config.mjs",
+				".github/workflows/deploy.yml",
+				"src/components/SiteHeader.astro",
+				"src/pages/index.astro",
+				"src/pages/services/[slug].astro",
+				"src/pages/stack/[slug].astro"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Commit GitHub Pages setup",
+			"type": "shell",
+			"command": "C:\\Program Files\\Git\\cmd\\git.exe",
+			"args": [
+				"commit",
+				"-m",
+				"Configure GitHub Pages deployment"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Push GitHub Pages setup",
+			"type": "shell",
+			"command": "C:\\Program Files\\Git\\cmd\\git.exe",
+			"args": [
+				"push",
+				"origin",
+				"master"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Enable GitHub Pages Actions",
+			"type": "shell",
+			"command": "C:\\Program Files\\GitHub CLI\\gh.exe",
+			"args": [
+				"api",
+				"--method",
+				"POST",
+				"repos/rbernhardtpersonal/robe-solutions/pages",
+				"-f",
+				"build_type=workflow"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check Pages workflow status",
+			"type": "shell",
+			"command": "C:\\Program Files\\GitHub CLI\\gh.exe",
+			"args": [
+				"run",
+				"list",
+				"--repo",
+				"rbernhardtpersonal/robe-solutions",
+				"--limit",
+				"1",
+				"--json",
+				"status,conclusion,url,name,headSha"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Watch Pages deployment",
+			"type": "shell",
+			"command": "C:\\Program Files\\GitHub CLI\\gh.exe",
+			"args": [
+				"run",
+				"watch",
+				"32724687210",
+				"--exit-status"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Make Pages repository public",
+			"type": "shell",
+			"command": "C:\\Program Files\\GitHub CLI\\gh.exe",
+			"args": [
+				"repo",
+				"edit",
+				"rbernhardtpersonal/robe-solutions",
+				"--visibility",
+				"public",
+				"--accept-visibility-change-consequences"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Enable public GitHub Pages",
+			"type": "shell",
+			"command": "C:\\Program Files\\GitHub CLI\\gh.exe",
+			"args": [
+				"api",
+				"--method",
+				"POST",
+				"repos/rbernhardtpersonal/robe-solutions/pages",
+				"-f",
+				"build_type=workflow"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Trigger public Pages deployment",
+			"type": "shell",
+			"command": "C:\\Program Files\\GitHub CLI\\gh.exe",
+			"args": [
+				"workflow",
+				"run",
+				"deploy.yml",
+				"--repo",
+				"rbernhardtpersonal/robe-solutions",
+				"--ref",
+				"master"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Verify Pages deployment run",
+			"type": "shell",
+			"command": "C:\\Program Files\\GitHub CLI\\gh.exe",
+			"args": [
+				"run",
+				"view",
+				"32724789511",
+				"--repo",
+				"rbernhardtpersonal/robe-solutions",
+				"--json",
+				"status,conclusion,url,name"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Final theme production build",
+			"type": "shell",
+			"command": "npm.cmd",
+			"args": [
+				"run",
+				"build"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Validate local preview fix",
+			"type": "shell",
+			"command": "npm.cmd",
+			"args": [
+				"run",
+				"build"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Inspect latest publish state",
+			"type": "shell",
+			"command": "C:\\Program Files\\Git\\cmd\\git.exe",
+			"args": [
+				"status",
+				"--short",
+				"--branch"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Stage website updates",
+			"type": "shell",
+			"command": "C:\\Program Files\\Git\\cmd\\git.exe",
+			"args": [
+				"add",
+				"astro.config.mjs",
+				"src/components/SiteHeader.astro",
+				"src/layouts/Layout.astro",
+				"src/pages/index.astro"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Commit website updates",
+			"type": "shell",
+			"command": "C:\\Program Files\\Git\\cmd\\git.exe",
+			"args": [
+				"commit",
+				"-m",
+				"Refine themes and navigation"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Push website updates",
+			"type": "shell",
+			"command": "C:\\Program Files\\Git\\cmd\\git.exe",
+			"args": [
+				"push",
+				"origin",
+				"master"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check Pages deployment",
+			"type": "shell",
+			"command": "C:\\Program Files\\GitHub CLI\\gh.exe",
+			"args": [
+				"run",
+				"list",
+				"--repo",
+				"rbernhardtpersonal/robe-solutions",
+				"--limit",
+				"1",
+				"--json",
+				"status,conclusion,url,headSha"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Verify published branch",
+			"type": "shell",
+			"command": "C:\\Program Files\\Git\\cmd\\git.exe",
+			"args": [
+				"status",
+				"--short",
+				"--branch"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check latest Pages run",
+			"type": "shell",
+			"command": "C:\\Program Files\\GitHub CLI\\gh.exe",
+			"args": [
+				"run",
+				"view",
+				"32736460463",
+				"--repo",
+				"rbernhardtpersonal/robe-solutions",
+				"--json",
+				"status,conclusion,url,createdAt,updatedAt,jobs"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Stage Pages link fix",
+			"type": "shell",
+			"command": "C:\\Program Files\\Git\\cmd\\git.exe",
+			"args": [
+				"add",
+				"astro.config.mjs",
+				"src/components/SiteHeader.astro",
+				"src/pages/index.astro",
+				"src/pages/services/[slug].astro",
+				"src/pages/stack/[slug].astro"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Commit Pages link fix",
+			"type": "shell",
+			"command": "C:\\Program Files\\Git\\cmd\\git.exe",
+			"args": [
+				"commit",
+				"-m",
+				"Fix GitHub Pages navigation paths"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Push Pages link fix",
+			"type": "shell",
+			"command": "C:\\Program Files\\Git\\cmd\\git.exe",
+			"args": [
+				"push",
+				"origin",
+				"master"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check corrected Pages deployment",
+			"type": "shell",
+			"command": "C:\\Program Files\\GitHub CLI\\gh.exe",
+			"args": [
+				"run",
+				"list",
+				"--repo",
+				"rbernhardtpersonal/robe-solutions",
+				"--limit",
+				"1",
+				"--json",
+				"status,conclusion,url,headSha"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Test production URL generation",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-Command",
+				"$env:GITHUB_ACTIONS='true'; npm.cmd run build; Select-String -Path 'dist/index.html' -Pattern 'robe-solutions/services|robe-solutions/stack' | Select-Object -First 4"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Build production path locally",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-Command",
+				"$env:GITHUB_ACTIONS=\"true\"; npm.cmd run build"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Validate local URL fix",
+			"type": "shell",
+			"command": "npm.cmd",
+			"args": [
+				"run",
+				"build"
+			],
+			"isBackground": false,
+			"problemMatcher": []
 		}
 	]
 }

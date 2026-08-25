@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import SiteHeader from '../../components/SiteHeader.astro';
+import ImagePlaceholder from '../../components/ImagePlaceholder.astro';
 import { stack } from '../../data/stack';
 
 export function getStaticPaths() {
@@ -15,7 +16,7 @@ const root = `${base}/`;
 <Layout title={`${item.name} | Robe Solutions`}>
 	<SiteHeader />
 	<main class="stack-page">
-		<section class="stack-hero"><div><p class="eyebrow">{item.number} / Robe Solutions stack</p><h1>{item.name}</h1><p class="lead">{item.description}</p><a class="button" href={`${root}#contact`}>Talk about your environment <span>↗</span></a></div><div class="image-placeholder"><span>PLATFORM / SYSTEM DETAIL</span><strong>Drop a platform image here</strong><small>Add an architecture diagram, product image, or implementation detail to <code>public/images</code>.</small></div></section>
+		<section class="stack-hero"><div><p class="eyebrow">{item.number} / Robe Solutions stack</p><h1>{item.name}</h1><p class="lead">{item.description}</p><a class="button" href={`${root}#contact`}>Talk about your environment <span>↗</span></a></div><ImagePlaceholder imageName={`${item.slug}.jpg`} alt={`${item.name} system detail`} label="PLATFORM / SYSTEM DETAIL" /></section>
 		<section class="stack-details"><div class="section-kicker">Where it fits</div><div class="details-content"><h2>Technology with<br /><em>a purpose.</em></h2><div class="points">{item.usedFor.map((use, index) => <div><span>0{index + 1}</span><p>{use}</p></div>)}</div></div></section>
 		<section class="next-step"><p class="eyebrow">The wider environment</p><h2>Systems work<br /><em>better together.</em></h2><a class="text-link" href={`${root}#architecture`}>See a reference architecture <span>↗</span></a></section>
 	</main>

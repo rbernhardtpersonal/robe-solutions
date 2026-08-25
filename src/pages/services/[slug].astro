@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import SiteHeader from '../../components/SiteHeader.astro';
+import ImagePlaceholder from '../../components/ImagePlaceholder.astro';
 import { services } from '../../data/services';
 import { stack } from '../../data/stack';
 
@@ -19,7 +20,7 @@ const root = `${base}/`;
 	<main class="service-page">
 		<section class="service-hero">
 			<div><p class="eyebrow">{service.number} / Robe Solutions services</p><h1>{service.name}</h1><p class="lead">{service.description}</p><a class="button" href={`${root}#contact`}>Talk about your project <span>↗</span></a></div>
-			<div class="image-placeholder"><span>IMAGE / PROJECT DETAIL</span><strong>Drop a service image here</strong><small>Add a relevant case study, diagram, or product image to <code>public/images</code>.</small></div>
+			<ImagePlaceholder imageName={`${service.slug}.jpg`} alt={`${service.name} project detail`} label="IMAGE / PROJECT DETAIL" />
 		</section>
 		<section class="service-details">
 			<div class="section-kicker">What this includes</div>

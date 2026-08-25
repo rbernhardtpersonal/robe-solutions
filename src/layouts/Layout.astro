@@ -15,7 +15,7 @@ const { title = 'Your Company' } = Astro.props;
 		<meta name="description" content="Robe Solutions builds dependable data platforms for teams that need better answers, faster." />
 		<script is:inline>
 			const savedTheme = localStorage.getItem('robe-theme');
-			document.documentElement.dataset.theme = savedTheme === 'dark' ? 'dark' : 'light';
+			document.documentElement.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
 		</script>
 		<title>{title}</title>
 	</head>

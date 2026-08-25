@@ -53,6 +53,15 @@ export const services = [
 		points: ['Implementation and configuration', 'Custom development and workflow automation', 'Salesforce data and systems integration'],
 		stack: ['Salesforce', 'Boomi Integration', 'Azure Logic Apps', 'Power Automate'],
 	},
+	{
+		slug: 'product-label-automation',
+		number: '07',
+		name: 'Product Label Automation',
+		short: 'Automate accurate product labels with BarTender from Seagull Scientific.',
+		description: 'Product labels need to be accurate, consistent, and ready when the operation needs them. We design and implement label automation with BarTender from Seagull Scientific, connecting product and order data to dependable print workflows. The result is less manual rework, fewer labeling errors, and a process that can scale with your operation.',
+		points: ['BarTender design and implementation', 'ERP, warehouse, and product data integration', 'Reliable print workflows and label governance'],
+		stack: ['BarTender', 'Boomi Integration', 'Azure Logic Apps', 'Power Automate', 'SQL Server', 'Azure SQL Database'],
+	},
 ] as const;
 
 export type Service = (typeof services)[number];

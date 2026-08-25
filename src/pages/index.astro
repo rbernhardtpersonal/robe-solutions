@@ -1,12 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
+import ImagePlaceholder from '../components/ImagePlaceholder.astro';
 import { services } from '../data/services';
 import { stack } from '../data/stack';
+import { imageFolder } from '../data/site';
 
 const companyName = 'Robe Solutions';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const root = `${base}/`;
+const slideshowImageCount = 5;
+const slideshowIntervalSeconds = 10;
+const slideshowImages = Array.from({ length: slideshowImageCount }, (_, index) => `Image_Carousel_${index + 1}.png`);
 ---
 
 <Layout title={companyName}>
@@ -23,7 +28,14 @@ const root = `${base}/`;
 					<a class="text-link" href="#approach">See how we work <span>↓</span></a>
 				</div>
 			</div>
-			<div class="hero-note"><span>6 capabilities</span><strong>One connected<br />data partner.</strong><a href="#capabilities">View services <span>↓</span></a></div>
+			<div class="hero-slideshow" data-interval={slideshowIntervalSeconds * 1000} aria-label="Robe Solutions work highlights">
+				<div class="slideshow-frame">
+					{slideshowImages.map((imageName, index) => <img class:list={{ active: index === 0 }} data-index={index} src={`${imageFolder}${imageName}`} alt={`Robe Solutions work highlight ${index + 1}`} />)}
+				</div>
+				<div class="slideshow-dots" aria-label="Choose slideshow image">
+					{slideshowImages.map((imageName, index) => <button type="button" data-index={index} class:list={{ active: index === 0 }} aria-label={`Show image ${index + 1}: ${imageName}`}></button>)}
+				</div>
+			</div>
 		</section>
 
 		<section class="proof-bar" aria-label="Trusted by ambitious teams">
@@ -48,7 +60,7 @@ const root = `${base}/`;
 		<section class="architecture" id="architecture">
 			<div class="section-kicker">04 / Reference architecture</div>
 			<div class="architecture-intro"><h2>A mature environment,<br /><em>working as one.</em></h2><p>Every platform has a role. Together they create a connected path from operational systems to trusted decisions.</p></div>
-			<div class="architecture-image"><span>IMAGE / REFERENCE ARCHITECTURE</span><strong>Add your environment diagram here</strong><small>Drop a large architecture image into <code>public/images</code> when it is ready.</small></div>
+			<ImagePlaceholder class="architecture-image" imageName="Reference_Architecture.jpg" alt="Reference data architecture diagram" label="IMAGE / REFERENCE ARCHITECTURE" />
 			<div class="architecture-examples">
 				<article><span>01</span><h3>Customer sync</h3><p>Using <a href={`${base}stack/azure-data-factory`}>Azure Data Factory</a> and integration services, keep the customer list synchronized between your ERP and <a href={`${base}services/salesforce-development-implementations`}>Salesforce</a>.</p></article>
 				<article><span>02</span><h3>Change data capture</h3><p>Use <a href={`${base}stack/qlik-replicate`}>Qlik Replicate</a> to capture changes from Salesforce and ERP systems and land fresh data in the datalake.</p></article>
@@ -130,4 +142,46 @@ const root = `${base}/`;
 	footer { max-width: 1240px; margin: 0 auto; padding: 27px 32px; display: flex; justify-content: space-between; color: #697269; font-size: 11px; } footer .logo { font-size: 15px; }
 	@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 	@media (max-width: 800px) { .site-header { padding: 22px 20px; } nav a:not(.nav-cta) { display: none; } .nav-cta { padding: 9px 11px; }.hero { display: block; padding: 70px 20px 80px; min-height: auto; }.hero h1 { letter-spacing: -3px; font-size: clamp(62px, 18vw, 100px); }.hero-note { min-height: 175px; margin-top: 70px; padding-left: 22px; }.proof-bar { padding: 18px 20px; gap: 18px; overflow: hidden; }.proof-bar span:nth-child(1), .proof-bar span:nth-child(5) { display: none; }.approach, .capabilities, .stack-section, .architecture { display: block; padding: 85px 20px; }.approach-content, .stack-content, .architecture-intro { display: block; }.approach-content p, .architecture-intro p { margin-top: 35px; }.stack-list { margin-top: 35px; }.architecture-image { min-height: 300px; margin-top: 50px; }.architecture-examples { display: block; margin-top: 40px; }.architecture-examples article, .architecture-examples article + article { border-left: 0; padding: 22px 0; }.capability-grid { display: block; }.capability-grid article, .capability-grid article + article { border-left: 0; padding: 22px 0; min-height: auto; }.capability-grid h3 { margin-top: 35px; }.contact { display: block; padding: 70px 20px; }.button-light { margin-top: 42px; }.contact h2 { letter-spacing: -3px; }.contact + footer { padding: 25px 20px; gap: 15px; flex-wrap: wrap; }.contact + footer > span:last-child { width: 100%; } }
+	.hero-slideshow { align-self: stretch; }
+	.slideshow-frame { position: relative; min-height: 390px; overflow: hidden; border: 1px solid #3a4239; border-radius: 18px; box-shadow: 0 18px 45px rgba(16,18,18,.22), 0 10px 25px rgba(201,248,91,.1); }
+	.slideshow-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .8s ease; }
+	.slideshow-frame img.active { opacity: 1; }
+	.slideshow-dots { display: flex; justify-content: center; gap: 9px; padding-top: 18px; }
+	.slideshow-dots button { width: 9px; height: 9px; padding: 0; border: 1px solid #697269; border-radius: 50%; background: transparent; cursor: pointer; }
+	.slideshow-dots button.active { background: #c9f85b; border-color: #c9f85b; }
+	.slideshow-dots button:disabled { opacity: .3; cursor: not-allowed; }
+	.slideshow-dots button:focus-visible { outline: 2px solid #c9f85b; outline-offset: 4px; }
 </style>
+
+<script>
+	const slideshow = document.querySelector<HTMLElement>('.hero-slideshow');
+	const slideshowImages: HTMLImageElement[] = slideshow ? Array.from(slideshow.querySelectorAll<HTMLImageElement>('.slideshow-frame img')) : [];
+	const slideshowDots: HTMLButtonElement[] = slideshow ? Array.from(slideshow.querySelectorAll<HTMLButtonElement>('.slideshow-dots button')) : [];
+	const slideshowInterval = Number(slideshow?.dataset.interval ?? 10000);
+	let activeImageIndex = 0;
+
+	const showSlideshowImage = (imageIndex: number) => {
+		activeImageIndex = imageIndex;
+		slideshowImages.forEach((image, index) => image.classList.toggle('active', index === activeImageIndex && !image.hidden));
+		slideshowDots.forEach((dot, index) => dot.classList.toggle('active', index === activeImageIndex));
+	};
+
+	slideshowImages.forEach((image, index) => image.addEventListener('error', () => {
+		image.hidden = true;
+		slideshowDots[index].disabled = true;
+		if (index === activeImageIndex) {
+			const nextAvailableIndex = slideshowImages.findIndex((candidate) => !candidate.hidden);
+			if (nextAvailableIndex >= 0) showSlideshowImage(nextAvailableIndex);
+		}
+	}));
+	slideshowDots.forEach((dot, index) => dot.addEventListener('click', () => showSlideshowImage(index)));
+
+	if (slideshowImages.length > 1) {
+		setInterval(() => {
+			const availableImages = slideshowImages.filter((image) => !image.hidden);
+			if (availableImages.length < 2) return;
+			const activeAvailableIndex = availableImages.findIndex((image) => image.classList.contains('active'));
+			showSlideshowImage(slideshowImages.indexOf(availableImages[(activeAvailableIndex + 1) % availableImages.length]));
+		}, slideshowInterval);
+	}
+</script>

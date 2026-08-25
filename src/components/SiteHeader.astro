@@ -14,18 +14,18 @@ const root = `${base}/`;
 			<button type="button" aria-haspopup="true">Services <span>⌄</span></button>
 			<div class="dropdown">
 				<p>What we do</p>
-				{services.map((service) => <a href={`${base}services/${service.slug}`}>{service.name}<span>↗</span></a>)}
+				{services.map((service) => <a href={`${root}services/${service.slug}`}>{service.name}<span>↗</span></a>)}
 			</div>
 		</div>
 		<div class="services-menu">
 			<button type="button" aria-haspopup="true">Stack <span>⌄</span></button>
 			<div class="dropdown stack-dropdown">
 				<p>Platforms we specialize in</p>
-				{stack.map((item) => <a href={`${base}stack/${item.slug}`}>{item.name}<span>↗</span></a>)}
+				{stack.map((item) => <a href={`${root}stack/${item.slug}`}>{item.name}<span>↗</span></a>)}
 			</div>
 		</div>
 		<button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch color mode"><span class="theme-option light">Light theme</span><span class="theme-option dark">Dark theme</span></button>
-		<a href={`${root}#contact`} class="nav-cta">Start a conversation <span>↗</span></a>
+		<a href={`${root}contact/`} class="nav-cta">Start a conversation <span>↗</span></a>
 	</nav>
 </header>
 

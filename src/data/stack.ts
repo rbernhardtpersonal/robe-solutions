@@ -79,6 +79,14 @@ export const stack = [
 		description: 'Qlik Replicate uses change data capture to continuously identify and move inserts, updates, and deletes from source systems. We use it when a data platform needs fresh operational data without repeatedly querying and reloading entire databases.',
 		usedFor: ['Change data capture from ERP and CRM systems', 'Near-real-time lake and warehouse feeds', 'Low-impact database replication'],
 	},
+	{
+		slug: 'bartender',
+		number: '11',
+		name: 'BarTender',
+		short: 'Design and automate professional product labels with Seagull Scientific.',
+		description: 'BarTender by Seagull Scientific is label design and automation software for creating accurate, consistent labels from business data. We connect it to the systems that hold product, inventory, order, and shipping information so labels can be generated reliably at the point of need.',
+		usedFor: ['Product and shipping label automation', 'ERP and warehouse data connections', 'Centralized label design and governance'],
+	},
 ] as const;
 
 export type StackItem = (typeof stack)[number];
